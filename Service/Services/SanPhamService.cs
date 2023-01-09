@@ -12,7 +12,7 @@ namespace Service.Services
 
     public class SanPhamService : Repository<Sanpham>, ISanPhamService
     {
-        public SanPhamService(QLShopDidongLaptopContext context) : base(context) { }
+        public SanPhamService(QLShopContext context) : base(context) { }
 
         public Sanpham ThongTinSanPham(string id)
         {

@@ -26,6 +26,7 @@ namespace Service.Models
         public virtual DbSet<Sanpham> Sanphams { get; set; }
         public virtual DbSet<Thuonghieu> Thuonghieus { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<ThanhVien> ThanhViens { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

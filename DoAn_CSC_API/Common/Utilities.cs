@@ -8,23 +8,27 @@ namespace DoAn_CSC_API.Common
     public class Utilities
     {
         // hàm copy thay vì dùng New Model
-        public static void Copy(TParent parent, TChild child)
+        public class PropertyCopier<TParent, TChild> where TParent : class
+                                    where TChild : class
         {
-            var parentProperties = parent.GetType().GetProperties();
-            var childProperties = child.GetType().GetProperties();
-
-            foreach (var parentProperty in parentProperties)
+            public static void Copy(TParent parent, TChild child)
             {
-                if (parentProperty.Name.ToLower() == "id") continue;
-                foreach (var childProperty in childProperties)
+                var parentProperties = parent.GetType().GetProperties();
+                var childProperties = child.GetType().GetProperties();
+
+                foreach (var parentProperty in parentProperties)
                 {
-                    if (parentProperty.Name == childProperty.Name &&
-                        parentProperty.PropertyType == childProperty.PropertyType &&
-                        childProperty.SetMethod != null)
+                    if (parentProperty.Name.ToLower() == "id") continue;
+                    foreach (var childProperty in childProperties)
                     {
-                        if (parentProperty.GetValue(parent) != null)
-                            childProperty.SetValue(child, parentProperty.GetValue(parent));
-                        break;
+                        if (parentProperty.Name == childProperty.Name &&
+                            parentProperty.PropertyType == childProperty.PropertyType &&
+                            childProperty.SetMethod != null)
+                        {
+                            if (parentProperty.GetValue(parent) != null)
+                                childProperty.SetValue(child, parentProperty.GetValue(parent));
+                            break;
+                        }
                     }
                 }
             }
