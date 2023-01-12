@@ -26,6 +26,7 @@ namespace DoAn_CSC_API.Controllers
         {
             ThanhVienModel.Output.DangNhap thongTinThanhVien = new();
             var tv = _iThanhVien.DangNhap(input.Email, input.MatKhau);
+            //ashdasldlhasld
 
             if (tv != null && tv.Id > 0)
             {
@@ -140,11 +141,12 @@ namespace DoAn_CSC_API.Controllers
                     tb.NoiDung = "thông tin tài khoản khôn hợp lệ";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 
                 throw;
             }
+            return tb;
         }
     }
 }
