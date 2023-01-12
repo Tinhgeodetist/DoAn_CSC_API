@@ -141,11 +141,12 @@ namespace DoAn_CSC_API.Controllers
                     tb.NoiDung = "thông tin tài khoản khôn hợp lệ";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 
                 throw;
             }
+            return tb;
         }
     }
 }
