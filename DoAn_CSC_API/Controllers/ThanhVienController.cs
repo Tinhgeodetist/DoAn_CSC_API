@@ -65,6 +65,7 @@ namespace DoAn_CSC_API.Controllers
                 //    NgaySinh = input.NgaySinh,
                 //    SocialLogin = input.SocialLogin
                 //};
+                //asdaslkdl
                 var thanhvienmoi = new Service.Models.ThanhVien();
                 Common.Utilities.PropertyCopier<ThanhVienModel.Input.DangKyThanhVien, Service.Models.ThanhVien>.Copy(input, thanhvienmoi);
                 var ketqua = _iThanhVien.DangKyThanhVien(thanhvienmoi);
