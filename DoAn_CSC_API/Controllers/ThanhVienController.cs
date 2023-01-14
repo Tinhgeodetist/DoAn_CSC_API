@@ -26,7 +26,6 @@ namespace DoAn_CSC_API.Controllers
         {
             ThanhVienModel.Output.DangNhap thongTinThanhVien = new();
             var tv = _iThanhVien.DangNhap(input.Email, input.MatKhau);
-            //ashdasldlhasld
 
             if (tv != null && tv.Id > 0)
             {
@@ -65,7 +64,6 @@ namespace DoAn_CSC_API.Controllers
                 //    NgaySinh = input.NgaySinh,
                 //    SocialLogin = input.SocialLogin
                 //};
-                //asdaslkdl
                 var thanhvienmoi = new Service.Models.ThanhVien();
                 Common.Utilities.PropertyCopier<ThanhVienModel.Input.DangKyThanhVien, Service.Models.ThanhVien>.Copy(input, thanhvienmoi);
                 var ketqua = _iThanhVien.DangKyThanhVien(thanhvienmoi);
@@ -147,6 +145,7 @@ namespace DoAn_CSC_API.Controllers
                 
                 throw;
             }
+            tb.NoiDung = "Lỗi";
             return tb;
         }
     }

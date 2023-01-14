@@ -6,12 +6,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using QLRapChieuPhimAPI.Auth;
 using Service.IServices;
 using Service.Models;
+using Service.Repository;
 using Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DoAn_CSC_API
@@ -31,7 +34,26 @@ namespace DoAn_CSC_API
 
             services.AddControllers();
             services.AddDbContext<QLShopContext>();
-            services.AddTransient<ISanPhamService, SanPhamService>();
+            
+            services.AddScoped<ISanPhamService, SanPhamService>();
+            services.AddScoped<ILoaihangService, LoaihangService>();
+
+            services.AddScoped<IChitietdonhangService, ChitietdonhangService>();
+            services.AddScoped<IChucnangService, ChucnangService>();
+            services.AddScoped<IDonhangService, DonhangService>();
+            services.AddScoped<IKhuyenmaiService, KhuyenmaiSerivce>();
+            services.AddScoped<IThuonghieuService, ThuongHieuService>();
+
+            services.AddScoped<IHinhService, HinhService>();
+
+            services.AddControllers();
+            services.AddMemoryCache();            
+            services.AddSingleton<Jwt>();
+            services.AddSingleton<IJwtAuthManager, JwtAuthManager>();
+            services.AddHostedService<JwtRefreshTokenCache>();
+            
+           
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

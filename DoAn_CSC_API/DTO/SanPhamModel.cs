@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Service.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -38,6 +39,19 @@ namespace DoAn_CSC_API.DTO
             {
                 public int ID { set; get; }
             }
+            public class XoaSanPham : DocThongTinSanPham { }
+            public class TimThongTinSP
+            {
+                public string TuKhoa { get; set; }
+                public int PageSize { get; set; }
+                public int CurrentPage { get; set; }
+            }
+            public class SanPhamTheoLoaiHang
+            {
+                public int LoaihangId { get; set; }
+                public int PageSize { get; set; }
+                public int CurrentPage { get; set; }
+            }
             public class SanPhamTheoThuongHieu
             {
                 public int ThuongHieuID { get; set; }
@@ -50,13 +64,35 @@ namespace DoAn_CSC_API.DTO
         {
             public class ThongTinSanPham : SanPhamBase
             {
+               
                 public ThuongHieuModel.ThuongHieuBase ThuongHieu { get; set; }
+                public KhuyenmaiModel.KhuyenMaiBase KhuyenMai { get; set; }
+                public LoaihangModel.LoaiHangBase LoaiHangSP { get; set; }
                 // cần gì thêm vô
                 public ThongTinSanPham()
                 {
-                    ThuongHieu = new();
+                    
+                    ThuongHieu = new ThuongHieuModel.ThuongHieuBase();
+                    KhuyenMai = new KhuyenmaiModel.KhuyenMaiBase();
+                    LoaiHangSP = new LoaihangModel.LoaiHangBase();
                 }
             }
+            public class SanPhamLoaiHang
+            {
+                public LoaihangModel.LoaiHangBase LoaihangHienHanh { get; set; }
+                public List<LoaihangModel.LoaiHangBase> DanhSachLoaiHang { get; set; }
+                public List<SanPhamModel.Output.ThongTinSanPham> DanhSachSanPham { get; set; }
+                public int CurrentPage { get; set; }
+                public int PageCount { get; set; }
+                public SanPhamLoaiHang()
+                {
+                    LoaihangHienHanh = new();
+                    DanhSachSanPham = new();
+                    DanhSachLoaiHang = new();
+                }
+                    
+            }
+
             public class SanPhamThuongHieu
             {
                 public ThuongHieuModel.ThuongHieuBase ThuongHieuHienHanh { get; set; }
@@ -69,6 +105,33 @@ namespace DoAn_CSC_API.DTO
                     ThuongHieuHienHanh = new();
                     DanhSachSanPham = new();
                     DanhSachThuongHieu = new();
+                }
+            }
+            public class ThemSPMoi :SanPhamBase
+            {
+                public List <ThuongHieuModel.ThuongHieuBase> DanhSachThuongHieu { get; set; }
+                public ChucnangModel.ChucnangBase Chucnang { get; set; }
+                public List<LoaihangModel.LoaiHangBase> DanhSachLoaiHang { get; set; }
+                public string ThongBao { get; set; }
+                public ThemSPMoi()
+                {
+                    DanhSachThuongHieu = new List<ThuongHieuModel.ThuongHieuBase>();
+                    DanhSachLoaiHang = new List<LoaihangModel.LoaiHangBase>();
+                    Chucnang = new ChucnangModel.ChucnangBase();
+                }
+
+            }
+            public class CapNhatSanPham:SanPhamBase
+            {
+                public List<ThuongHieuModel.ThuongHieuBase> DanhSachThuongHieu { get; set; }
+                public ChucnangModel.ChucnangBase Chucnang { get; set; }
+                public List<LoaihangModel.LoaiHangBase> DanhSachLoaiHang { get; set; }
+                public string ThongBao { get; set; }
+                public CapNhatSanPham()
+                {
+                    DanhSachThuongHieu = new List<ThuongHieuModel.ThuongHieuBase>();
+                    DanhSachLoaiHang = new List<LoaihangModel.LoaiHangBase>();
+                    Chucnang = new ChucnangModel.ChucnangBase();
                 }
             }
         }

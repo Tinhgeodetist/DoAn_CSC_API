@@ -10,6 +10,10 @@ namespace Service.IServices
 {
     public interface ISanPhamService : IRepository<Sanpham>
     {
-        Sanpham ThongTinSanPham(string id);
+        List<Sanpham> DocDanhSachSanPhamDangHot(bool hot = true);
+        List<Sanpham> DocDanhSachSanPhamTheoLoaiHang(int LoaihangId,int currentPage, int pageSize = 20);
+        List<Sanpham> DocDanhSachSanPhamTheoThuongHieu(int ThuonghieuId,int currentPage, int pageSize = 20);
+        Sanpham DocThongTinSanPham(int id);
+
     }
 }
