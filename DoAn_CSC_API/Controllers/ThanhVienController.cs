@@ -50,7 +50,7 @@ namespace DoAn_CSC_API.Controllers
         [HttpPost("DangKyThanhVien")]
         public ThongBaoModel DangKyThanhVien(ThanhVienModel.Input.DangKyThanhVien input)
         {
-            ThongBaoModel tb = new ThongBaoModel { MaSo = 0, NoiDung = "" };
+            ThongBaoModel tb = new ThongBaoModel { Maso = 0, Noidung = "" };
             try
             {
                 //var thanhvienmoi = new Service.Models.ThanhVien
@@ -69,18 +69,18 @@ namespace DoAn_CSC_API.Controllers
                 var ketqua = _iThanhVien.DangKyThanhVien(thanhvienmoi);
                 if (ketqua == true)
                 {
-                    tb.MaSo = 0;
-                    tb.NoiDung = "Đăng ký thành viên mới thành công. Vui lòng kiểm tra email để kích hoạt";
+                    tb.Maso = 0;
+                    tb.Noidung = "Đăng ký thành viên mới thành công. Vui lòng kiểm tra email để kích hoạt";
                 }
                 else
                 {
-                    tb.MaSo = 1;
-                    tb.NoiDung = "Đăng ký không thành công vui lòng thử lại";
+                    tb.Maso = 1;
+                    tb.Noidung = "Đăng ký không thành công vui lòng thử lại";
                 }
             }
             catch (Exception ex)
             {
-                tb.NoiDung = "Lỗi đăng ký: " +ex.Message;
+                tb.Noidung = "Lỗi đăng ký: " +ex.Message;
                 throw;
             }
             return tb;
@@ -89,24 +89,24 @@ namespace DoAn_CSC_API.Controllers
         [HttpPost("KichHoatTaiKhoan")]
         public ThongBaoModel KichHoatTaiKhoan(ThanhVienModel.Input.KichHoatTaiKhoan input)
         {
-            ThongBaoModel tb = new ThongBaoModel { MaSo = 0, NoiDung = "" };
+            ThongBaoModel tb = new ThongBaoModel { Maso = 0, Noidung = "" };
             try
             {
                 var ketqua = _iThanhVien.KickHoatTaiKhoan(input.Email);
                 if (ketqua == true)
                 {
-                    tb.MaSo = 0;
-                    tb.NoiDung = "Kích hoạt thành viên mới thành công.";
+                    tb.Maso = 0;
+                    tb.Noidung = "Kích hoạt thành viên mới thành công.";
                 }
                 else
                 {
-                    tb.MaSo = 1;
-                    tb.NoiDung = "Kích hoạt không thành công vui lòng thử lại";
+                    tb.Maso = 1;
+                    tb.Noidung = "Kích hoạt không thành công vui lòng thử lại";
                 }
             }
             catch (Exception ex)
             {
-                tb.NoiDung = "Lỗi kích hoạt: " + ex.Message;
+                tb.Noidung = "Lỗi kích hoạt: " + ex.Message;
                 throw;
             }
             return tb;
@@ -115,7 +115,7 @@ namespace DoAn_CSC_API.Controllers
         [HttpPost("DoiMatKhau")]
         public ThongBaoModel DoiMatKhau(ThanhVienModel.Input.ThayDoiMatKhau input)
         {
-            ThongBaoModel tb = new ThongBaoModel { MaSo = 0, NoiDung = "" };
+            ThongBaoModel tb = new ThongBaoModel { Maso = 0, Noidung = "" };
             try
             {
                 var tv = _iThanhVien.DocThongTin(input.Id);
@@ -125,19 +125,19 @@ namespace DoAn_CSC_API.Controllers
                     var ketqua = _iThanhVien.ThayDoiMatKhau(tv);
                     if (ketqua == true)
                     {
-                        tb.MaSo = 0;
-                        tb.NoiDung = "Thay đổi mật khẩu thành công";
+                        tb.Maso = 0;
+                        tb.Noidung = "Thay đổi mật khẩu thành công";
                     }
                     else
                     {
-                        tb.MaSo = 1;
-                        tb.NoiDung = "Thay đổi mật khẩu không thành công";
+                        tb.Maso = 1;
+                        tb.Noidung = "Thay đổi mật khẩu không thành công";
                     }
                 }
                 else
                 {
-                    tb.MaSo = 2;
-                    tb.NoiDung = "thông tin tài khoản khôn hợp lệ";
+                    tb.Maso = 2;
+                    tb.Noidung = "thông tin tài khoản khôn hợp lệ";
                 }
             }
             catch (Exception)
@@ -145,7 +145,7 @@ namespace DoAn_CSC_API.Controllers
                 
                 throw;
             }
-            tb.NoiDung = "Lỗi";
+            tb.Noidung = "Lỗi";
             return tb;
         }
     }

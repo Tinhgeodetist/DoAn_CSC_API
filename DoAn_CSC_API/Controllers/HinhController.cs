@@ -27,8 +27,7 @@ namespace DoAn_CSC_API.Controllers
             {
                 HinhId = x.HinhId,
                 Carousel = x.Carousel,
-                Thumbnails = x.Thumbnails,
-                KichHoat = x.KichHoat,
+                Thumbnails = x.Thumbnails
             }).ToList();
             return dshinh;
         }
@@ -42,8 +41,7 @@ namespace DoAn_CSC_API.Controllers
                 {
                     HinhId = input.HinhId,
                     Carousel = input.Carousel,
-                    Thumbnails = input.Thumbnails,
-                    KichHoat = input.KichHoat,
+                    Thumbnails = input.Thumbnails
                 });
                 if (hinh != null)
                 {
@@ -86,8 +84,7 @@ namespace DoAn_CSC_API.Controllers
                 {
                     HinhId = input.HinhId,
                     Carousel = input.Carousel,
-                    Thumbnails = input.Thumbnails,
-                    KichHoat = input.KichHoat
+                    Thumbnails = input.Thumbnails
                 };
                 if (!_ihinhService.Sua(hinh))
                 {

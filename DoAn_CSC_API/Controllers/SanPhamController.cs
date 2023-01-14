@@ -1,7 +1,7 @@
 ﻿using DoAn_CSC_API.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using QLRapChieuPhimAPI.Common;
+using DoAn_CSC_API.Common;
 using Service.IServices;
 using Service.Models;
 using System;
