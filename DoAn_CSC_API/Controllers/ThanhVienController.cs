@@ -67,10 +67,10 @@ namespace DoAn_CSC_API.Controllers
                 var thanhvienmoi = new Service.Models.ThanhVien();
                 Common.Utilities.PropertyCopier<ThanhVienModel.Input.DangKyThanhVien, Service.Models.ThanhVien>.Copy(input, thanhvienmoi);
                 var ketqua = _iThanhVien.DangKyThanhVien(thanhvienmoi);
-                if (ketqua == true)
+                if (ketqua != null)
                 {
                     tb.Maso = 0;
-                    tb.Noidung = "Đăng ký thành viên mới thành công. Vui lòng kiểm tra email để kích hoạt";
+                    tb.Noidung = ketqua.Id.ToString();
                 }
                 else
                 {
@@ -119,6 +119,7 @@ namespace DoAn_CSC_API.Controllers
             try
             {
                 var tv = _iThanhVien.DocThongTin(input.Id);
+
                 if (tv != null && tv.MatKhau == input.MatKhauCu)
                 {
                     tv.MatKhau = input.MatKhauMoi;
@@ -145,7 +146,6 @@ namespace DoAn_CSC_API.Controllers
                 
                 throw;
             }
-            tb.Noidung = "Lỗi";
             return tb;
         }
     }

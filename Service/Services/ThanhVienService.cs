@@ -12,18 +12,18 @@ namespace Service.Services
     public class ThanhVienService : Repository<ThanhVien>, IThanhVienService
     {
         public ThanhVienService(QLShopContext context) : base(context) { }
-        public bool DangKyThanhVien(ThanhVien thanhvien)
+        public ThanhVien DangKyThanhVien(ThanhVien thanhvien)
         {
             var tv = _context.ThanhViens.FirstOrDefault(x => x.Email.Equals(thanhvien.Email));
-            if (tv != null) return false;
+            if (tv != null) return null;
             try
             {
                 var thanhvienmoi = base.Them(thanhvien);
-                return true;
+                return thanhvienmoi;
             }
             catch (Exception)
             {
-                return false;
+                return null;
             }
         }
 

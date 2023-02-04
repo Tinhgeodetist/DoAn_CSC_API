@@ -11,7 +11,7 @@ namespace Service.IServices
     public interface IThanhVienService : IRepository<ThanhVien> 
     {
         ThanhVien DangNhap(string email, string password);
-        bool DangKyThanhVien(ThanhVien thanhvien);
+        ThanhVien DangKyThanhVien(ThanhVien thanhvien);
         bool KickHoatTaiKhoan(string email);
         bool ThayDoiMatKhau(ThanhVien thanhvien);
         ThanhVien DocThongTin(int id);
