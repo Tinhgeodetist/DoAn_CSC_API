@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace DoAn_CSC_API.DTO
+namespace Service.Models
 {
-    public class ThongBaoModel
+    public class ThongBao
     {
         public int MaSo { get; set; }
         public string NoiDung { get; set; }
