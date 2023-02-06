@@ -27,13 +27,13 @@ namespace DoAn_CSC_API.Controllers
         [HttpPost("MuaDonHang")]
         public ThongBaoModel MuaDonHang(DonhangModel.Input.MuaDonHang input)
         {
-            var tb = new ThongBaoModel { Maso = 0, Noidung = "" };
+            var tb = new ThongBaoModel { MaSo = 0, NoiDung = "" };
             try
             {
                 if (input == null || input.DanhSachDonHang.Count == 0)
                 {
-                    tb.Maso = 1;
-                    tb.Noidung = "Thông tin đơn hàng không hợp lệ";
+                    tb.MaSo = 1;
+                    tb.NoiDung = "Thông tin đơn hàng không hợp lệ";
                 }
                 else
                 {
@@ -57,15 +57,15 @@ namespace DoAn_CSC_API.Controllers
                     }
                     if (!_idonhangService.MuaDonHang(dsDonhang))
                     {
-                        tb.Maso = 3;
-                        tb.Noidung = "Có lỗi trong quá trình mua! Xin thử lại";
+                        tb.MaSo = 3;
+                        tb.NoiDung = "Có lỗi trong quá trình mua! Xin thử lại";
                     };
                 }
             }
             catch (Exception ex)
             {
-                tb.Maso =  2;
-                tb.Noidung = "Lỗi mua vé. " + ex.Message;
+                tb.MaSo =  2;
+                tb.NoiDung = "Lỗi mua vé. " + ex.Message;
             }
             return tb;
         }

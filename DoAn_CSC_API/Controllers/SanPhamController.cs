@@ -25,6 +25,18 @@ namespace DoAn_CSC_API.Controllers
             _iLoaihangService = iloaihangService;
             _iThuonghieuService = ithuonghieuService;
         }
+
+        [HttpPost("DocDanhSach")]
+        public List<SanPhamModel.SanPhamBase> DocDanhSach()
+        {
+            var data = _iSanPhamService.DocDanhSach().Select(x => new SanPhamModel.SanPhamBase
+            {
+                TenSanPham = x.TenSanPham,
+                Gia = x.Gia
+            }).ToList();
+            
+            return data;
+        }
         [HttpPost("DanhSachSanPhamTheoLoaiHang")]
         public SanPhamModel.Output.SanPhamLoaiHang DanhSachSanPhamTheoLoaiHang(SanPhamModel.Input.SanPhamTheoLoaiHang input)
         {

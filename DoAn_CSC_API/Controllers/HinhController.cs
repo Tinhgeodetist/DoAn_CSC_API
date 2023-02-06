@@ -34,7 +34,7 @@ namespace DoAn_CSC_API.Controllers
         [HttpPost("ThemHinh")]
         public ThongBaoModel ThemHinhMoi(HinhModel.Input.ThongTinHinh input)
         {
-            var thongbao = new ThongBaoModel { Maso = 1, Noidung = "" };
+            var thongbao = new ThongBaoModel { MaSo = 1, NoiDung = "" };
             try
             {
                 var hinh = _ihinhService.Them(new Service.Models.Hinh()
@@ -45,19 +45,19 @@ namespace DoAn_CSC_API.Controllers
                 });
                 if (hinh != null)
                 {
-                    thongbao.Noidung = hinh.HinhId.ToString();
+                    thongbao.NoiDung = hinh.HinhId.ToString();
                 }
                 else
                 {
-                    thongbao.Maso = 1;
-                    thongbao.Noidung = "Không thêm được hình";
+                    thongbao.MaSo = 1;
+                    thongbao.NoiDung = "Không thêm được hình";
                 }
 
             }
             catch (Exception)
             {
-                thongbao.Maso = 1;
-                thongbao.Noidung = "Không thêm được Hình";
+                thongbao.MaSo = 1;
+                thongbao.NoiDung = "Không thêm được Hình";
             }
             return thongbao;
         }
@@ -77,7 +77,7 @@ namespace DoAn_CSC_API.Controllers
         [HttpPost("CapNhatHinh")]
         public ThongBaoModel CapNhatHinh(HinhModel.Input.ThongTinHinh input)
         {
-            var tb = new ThongBaoModel { Maso = 1, Noidung = "" };
+            var tb = new ThongBaoModel { MaSo = 1, NoiDung = "" };
             try
             {
                 Service.Models.Hinh hinh = new()
@@ -88,39 +88,39 @@ namespace DoAn_CSC_API.Controllers
                 };
                 if (!_ihinhService.Sua(hinh))
                 {
-                    tb.Maso = 1;
-                    tb.Noidung = "Không cập nhật đươc Hình";
+                    tb.MaSo = 1;
+                    tb.NoiDung = "Không cập nhật đươc Hình";
 
                 }
 
             }
             catch(Exception )
             {
-                tb.Maso = 1;
-                tb.Noidung = "Không cập nhật đươc Hình";
+                tb.MaSo = 1;
+                tb.NoiDung = "Không cập nhật đươc Hình";
             }
             return tb;
         }
         [HttpPost("XoaHinh")]
         public ThongBaoModel XoaHinh(HinhModel.Input.XoaHinh input)
         {
-            var tb = new ThongBaoModel { Maso = 1, Noidung = "" };
+            var tb = new ThongBaoModel { MaSo = 1, NoiDung = "" };
             if (input.Id > 0)
             {
                 var Hinh = _ihinhService.DocThongTinHinh(input.Id);
                 if (Hinh != null && _ihinhService.Xoa(Hinh))
-                    tb.Noidung = Hinh.ToString();
+                    tb.NoiDung = Hinh.ToString();
                 else
                 {
-                    tb.Maso = 1;
-                    tb.Noidung = "Không xóa được Hình";
+                    tb.MaSo = 1;
+                    tb.NoiDung = "Không xóa được Hình";
                 }
                 
             }
             else
             {
-                tb.Maso = 1;
-                tb.Noidung = "Không xóa được Hình";
+                tb.MaSo = 1;
+                tb.NoiDung = "Không xóa được Hình";
             }
             return tb;
         }
