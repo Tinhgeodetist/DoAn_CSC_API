@@ -21,30 +21,39 @@ namespace DoAn_CSC_API.DTO
         }
         public class Input
         {
-            public class DangNhap
-            {
-                public string Email { get; set; }
-                public string MatKhau { get; set; }
-            }
-            public class DangKyThanhVien : ThanhVienBase { }
-                
-            public class ThayDoiMatKhau
+            public class ThongTinThanhVienMoi : ThanhVienBase { }
+            public class ThongTinThanhVien
             {
                 public int Id { get; set; }
-                public string Email { get; set; }
-                public string MatKhauMoi { get; set; }
+            }
+            public class ThongTinThayDoiMatKhau
+            {
+                public int Id { get; set; }
+                public string Username { get; set; }
                 public string MatKhauCu { get; set; }
+                public string MatKhauMoi { get; set; }
+            }
+            public class ThongTinDangNhap
+            {
+                public string TenDangNhap { get; set; }
+                public string MatKhau { get; set; }
             }
             public class KichHoatTaiKhoan
             {
                 public string Email { get; set; }
             }
+
         }
         public class Output
         {
             public class DangNhap : ThanhVienBase 
             { 
                 public string ThongBao { get; set; }            
+            }
+            public class ThongTinThanhVien : ThanhVienBase
+            {
+                public string AccessToken { get; set; }
+                public string ThongBao { get; set; }
             }
         }
     }

@@ -10,10 +10,12 @@ namespace Service.IServices
 {
     public interface IThanhVienService : IRepository<ThanhVien> 
     {
-        ThanhVien DangNhap(string email, string password);
-        bool DangKyThanhVien(ThanhVien thanhvien);
-        bool KickHoatTaiKhoan(string email);
-        bool ThayDoiMatKhau(ThanhVien thanhvien);
-        ThanhVien DocThongTin(int id);
+        ThongTinThanhVien DangNhap(string TenDangNhap, string MatKhau);
+        ThongBao DangKyThanhVien(ThanhVien thanh_vien_moi);
+        ThanhVien TimThanhVien(string Email);
+        ThongBao ThayDoiMatKhau(int Id, string Username, string MatKhauCu, string MatKhauMoi);
+        ThanhVien DocThongTinThanhVien(int Id);
+        ThongBao ThemThanhVien(ThanhVien thanh_vien_moi);
+        ThongBao KichHoatTaiKhoan(string email);
     }
 }

@@ -18,7 +18,11 @@ namespace DoAn_CSC_API.DTO
         {
             public class ThongTinThuongHieu : ThuongHieuBase
             {
-
+                public List<SanPhamModel.SanPhamBase> DanhSachThuongHieu { get; set; }
+                public ThongTinThuongHieu()
+                {
+                    DanhSachThuongHieu = new List<SanPhamModel.SanPhamBase>();
+                }
             }
         }
     }
